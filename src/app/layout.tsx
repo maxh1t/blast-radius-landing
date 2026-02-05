@@ -14,11 +14,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
     metadataBase: new URL('https://blast-radius.dev'), // поменяй на реальный домен
-    title: 'Blast Radius – Impact analysis for code changes',
+    title: 'Blast Radius | Impact analysis for code changes',
     description:
         'See the blast radius of every code change before you merge. Blast Radius maps the real downstream impact of a pull request so engineering teams can review and ship with confidence.',
     openGraph: {
-        title: 'Blast Radius – Impact analysis for code changes',
+        title: 'Blast Radius | Impact analysis for code changes',
         description:
             'Understand the real downstream impact of code changes before they reach production.',
         type: 'website',

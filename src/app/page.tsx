@@ -5,10 +5,10 @@ import {Network} from 'lucide-react';
 const copy = {
     en: {
         tag: 'Impact analysis for code changes',
-        title: 'See the blast radius of the code change before you merge',
+        title: 'Understand what will break before you merge a change',
         subtitle:
-            'Small changes often cause big incidents. Blast Radius helps teams understand what their changes will affect before they reach production.',
-        ctaPrimary: 'Book a 30-min intro call',
+            'Blast Radius helps you reason about the impact of a code change: which services, APIs, and flows may be affected, before it reaches production.',
+        ctaPrimary: 'Discuss a real change (30 min)',
         ctaSecondary: 'Get early access',
         problemTitle: 'Why risky changes slip through code review',
         problem: [
@@ -22,6 +22,14 @@ const copy = {
             'Highlight affected services, APIs and flows',
             'Surface risky changes and hidden dependencies early',
         ],
+        callTitle: 'What happens on the call',
+        callSteps: [
+            'We take a real or hypothetical code change',
+            'Walk through what it could affect and why',
+            'Discuss where hidden dependencies usually appear',
+            'Validate whether this problem is relevant for your system',
+        ],
+        callNote: 'No product demo. No sales pitch. Just a structured discussion.',
         whoTitle: 'Who it’s for',
         who: [
             'Backend-heavy engineering teams',
@@ -30,15 +38,15 @@ const copy = {
         ],
         footerTitle: 'Early concept, real problem',
         footerText:
-            'Blast Radius is an early-stage idea. I’m validating it with real teams to understand whether this solves a painful, real-world problem.',
-        footerCta: 'Schedule a 30-min call',
+            'Blast Radius is an early-stage concept. I’m validating it by walking through real code changes with engineering teams to understand where change impact becomes risky.',
+        footerCta: 'Walk through a real example (30 min)',
     },
     ru: {
         tag: 'Анализ последствий изменений в коде',
-        title: 'Понимай blast radius каждого изменения до merge',
+        title: 'Понимай, что может сломаться до merge изменения',
         subtitle:
-            'Маленькие изменения часто приводят к большим инцидентам. Blast Radius помогает понять, что именно затронет изменение до выхода в продакшен.',
-        ctaPrimary: 'Созвон на 30 минут',
+            'Blast Radius помогает разобраться в последствиях изменения: какие сервисы, API и флоу могут быть затронуты, до выхода в продакшен.',
+        ctaPrimary: 'Разобрать реальное изменение (30 мин)',
         ctaSecondary: 'Ранний доступ',
         problemTitle: 'Почему рискованные изменения проходят code review',
         problem: [
@@ -52,6 +60,14 @@ const copy = {
             'Подсветка затронутых сервисов, API и флоу',
             'Раннее выявление рискованных изменений и скрытых зависимостей',
         ],
+        callTitle: 'Что будет на созвоне',
+        callSteps: [
+            'Берём реальное или гипотетическое изменение в коде',
+            'Разбираем, что и почему может быть затронуто',
+            'Обсуждаем, где обычно прячутся скрытые зависимости',
+            'Проверяем, актуальна ли эта проблема для вашей системы',
+        ],
+        callNote: 'Без демо продукта и без продажи. Только разбор и обсуждение.',
         whoTitle: 'Для кого',
         who: [
             'Backend-команды',
@@ -60,8 +76,8 @@ const copy = {
         ],
         footerTitle: 'Ранняя стадия, реальная проблема',
         footerText:
-            'Blast Radius — ранняя идея. Я валидирую её с реальными командами, чтобы понять, решает ли она действительно болезненную проблему.',
-        footerCta: 'Созвон на 30 минут',
+            'Blast Radius — идея на ранней стадии. Я валидирую её, разбирая реальные изменения в коде вместе с командами и изучая, где именно возникают риски.',
+        footerCta: 'Разбор реального примера (30 мин)',
     },
 };
 
@@ -149,6 +165,23 @@ export default function Page() {
                             <li key={item}>• {item}</li>
                         ))}
                     </ul>
+                </section>
+
+                {/* What happens on the call */}
+                <section className="mb-24">
+                    <h2 className="mb-6 text-2xl font-semibold">
+                        {t.callTitle}
+                    </h2>
+
+                    <ul className="space-y-4 text-slate-400">
+                        {t.callSteps.map((item) => (
+                            <li key={item}>• {item}</li>
+                        ))}
+                    </ul>
+
+                    <p className="mt-6 max-w-2xl text-slate-500 text-sm">
+                        {t.callNote}
+                    </p>
                 </section>
 
                 {/* Who */}

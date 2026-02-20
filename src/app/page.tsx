@@ -1,91 +1,115 @@
 'use client';
-import {useState} from 'react';
-import {Network} from 'lucide-react';
+
+import { useState } from 'react';
+import { Network } from 'lucide-react';
 
 const copy = {
     en: {
-        tag: 'Change risk awareness',
-        title: 'Understand the risk of a change before you merge it',
+        tag: 'Cross-service change impact',
+        title: 'See the impact of a change before you merge',
+
         subtitle:
-            'Blast Radius helps teams reason about the potential impact of code changes across services and repositories before those changes cause problems in production.',
-        ctaPrimary: 'Discuss a real change (30 min)',
+            'Blast Radius analyzes API, schema and contract changes across repositories and highlights which services may be affected, directly inside your pull request.',
 
-        problemTitle: 'The problem',
+        ctaPrimary: 'Discuss a pilot (30 min)',
+
+        problemTitle: 'The reality of growing systems',
         problem: [
-            'Engineers rarely see the full system impact of a change',
-            'Dependencies are spread across services, repositories, and teams',
-            'Small changes often lead to large and delayed incidents',
+            'Multiple services evolve independently',
+            'Contracts change across repositories and teams',
+            'Dependencies are not always obvious',
+            'Small changes can cause delayed breakage',
         ],
 
-        solutionTitle: 'How we approach it',
+        solutionTitle: 'What Blast Radius does',
         solution: [
-            'Analyze proposed code changes in system context',
-            'Surface services, APIs, and areas that may be affected',
-            'Highlight potential risk before merge or release',
+            'Parses proposed changes in pull requests',
+            'Detects API and schema modifications',
+            'Surfaces potentially affected services and repositories',
+            'Flags risky changes before merge',
         ],
 
-        callTitle: 'What happens on the call',
-        callSteps: [
-            'We take a real or hypothetical code change',
-            'Walk through possible impact and risk areas',
-            'Discuss where hidden dependencies usually appear',
-            'Check whether this problem matches your system',
+        howItWorksTitle: 'How it works',
+        howItWorks: [
+            'Connect to your GitHub or GitLab repositories',
+            'Analyze diffs in pull requests',
+            'Map changes to related code across services',
+            'Post impact summary as a PR comment',
         ],
-        callNote: 'No demo. No sales pitch. Just a focused discussion.',
+
+        deploymentTitle: 'Deployment options',
+        deployment: [
+            'GitHub and GitLab compatible',
+            'Self-hosted inside your infrastructure',
+            'Read-only repository access',
+        ],
 
         whoTitle: 'Who this is for',
         who: [
-            'Teams working with multiple services',
-            'Tech leads and staff engineers',
-            'Engineering managers and CTOs',
+            'Teams working with multiple backend services',
+            'Engineering leads managing legacy systems',
+            'Projects with cross-repository dependencies',
         ],
 
-        footerTitle: 'Early stage, real operational risk',
-        footerText:
-            'Blast Radius is an early-stage concept. I validate it by reviewing real code changes with engineering teams and learning where reasoning about change impact becomes difficult.',
-        footerCta: 'Walk through a real example (30 min)',
+        stageTitle: 'Current stage',
+        stageText:
+            'Blast Radius is in early development. I am working with a small number of engineering teams to build the first production-ready pilot based on real repositories and real change scenarios.',
+
+        footerCta: 'Talk through your system (30 min)',
     },
+
     ru: {
-        tag: 'Осознание рисков изменений',
-        title: 'Понимай риск изменений до их внедрения',
+        tag: 'Анализ влияния изменений между сервисами',
+        title: 'Понимай влияние изменений до их внедрения',
+
         subtitle:
-            'Blast Radius помогает командам понять возможные последствия изменений в коде между сервисами и репозиториями до того, как они приведут к проблемам в продакшене.',
-        ctaPrimary: 'Разобрать реальное изменение (30 мин)',
+            'Blast Radius анализирует изменения API, схем и контрактов между репозиториями и показывает, какие сервисы могут быть затронуты прямо в pull request.',
 
-        problemTitle: 'Проблема',
+        ctaPrimary: 'Обсудить пилот (30 мин)',
+
+        problemTitle: 'Как это выглядит в реальных системах',
         problem: [
-            'Инженеры не понимают полное влияние изменений на систему',
-            'Зависимости распределены между сервисами, репозиториями и командами',
-            'Небольшие изменения часто приводят к крупным и отложенным инцидентам',
+            'Несколько сервисов развиваются независимо',
+            'Контракты меняются между репозиториями и командами',
+            'Зависимости не всегда очевидны',
+            'Небольшие изменения приводят к отложенным поломкам',
         ],
 
-        solutionTitle: 'Как мы к этому подходим',
+        solutionTitle: 'Что делает Blast Radius',
         solution: [
-            'Рассматриваем изменения в контексте всей системы',
-            'Подсвечиваем сервисы, API и зоны возможного влияния',
-            'Помогаем заранее увидеть потенциальные риски',
+            'Анализирует изменения в pull request',
+            'Определяет изменения API и схем',
+            'Подсвечивает потенциально затронутые сервисы',
+            'Сигнализирует о рисках до их внедрения',
         ],
 
-        callTitle: 'Что происходит на созвоне',
-        callSteps: [
-            'Берем реальное или гипотетическое изменение',
-            'Разбираем возможные последствия и зоны риска',
-            'Обсуждаем, где чаще всего возникают скрытые зависимости',
-            'Проверяем, насколько эта проблема актуальна для вашей системы',
+        howItWorksTitle: 'Как это работает',
+        howItWorks: [
+            'Подключается к GitHub или GitLab',
+            'Анализирует изменения в pull request',
+            'Связывает изменения с кодом в других сервисах',
+            'Добавляет комментарий с обзором влияния',
         ],
-        callNote: 'Без демо и без продажи. Только предметный разбор.',
+
+        deploymentTitle: 'Развертывание',
+        deployment: [
+            'Поддержка GitHub и GitLab',
+            'Можно развернуть внутри вашего контура',
+            'Доступ только на чтение к репозиториям',
+        ],
 
         whoTitle: 'Для кого',
         who: [
-            'Команды с несколькими сервисами',
-            'Tech lead и staff инженеры',
-            'Engineering managers и CTO',
+            'Команды с несколькими backend-сервисами',
+            'Tech lead и архитекторы легаси-проектов',
+            'Проекты с зависимостями между репозиториями',
         ],
 
-        footerTitle: 'Ранняя стадия, реальный операционный риск',
-        footerText:
-            'Blast Radius находится на ранней стадии. Я валидирую идею, разбирая реальные изменения в коде вместе с командами и изучая, в каких местах возникает неопределенность и риск.',
-        footerCta: 'Разобрать реальный пример (30 мин)',
+        stageTitle: 'Текущая стадия',
+        stageText:
+            'Blast Radius находится на ранней стадии. Я работаю с ограниченным числом команд, чтобы собрать первый production-ready пилот на основе реальных репозиториев и сценариев изменений.',
+
+        footerCta: 'Разобрать ваш кейс (30 мин)',
     },
 };
 
@@ -105,7 +129,7 @@ export default function Page() {
                 <div className="mb-16 flex items-center justify-between">
                     <div className="flex items-center gap-3">
                         <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-900">
-                            <Network/>
+                            <Network />
                         </div>
                         <span className="text-sm text-slate-400">{t.tag}</span>
                     </div>
@@ -162,19 +186,28 @@ export default function Page() {
                     </ul>
                 </section>
 
-                {/* Call */}
+                {/* How it works */}
                 <section className="mb-24">
                     <h2 className="mb-6 text-2xl font-semibold">
-                        {t.callTitle}
+                        {t.howItWorksTitle}
                     </h2>
                     <ul className="space-y-4 text-slate-400">
-                        {t.callSteps.map((item) => (
+                        {t.howItWorks.map((item) => (
                             <li key={item}>• {item}</li>
                         ))}
                     </ul>
-                    <p className="mt-6 max-w-2xl text-slate-500 text-sm">
-                        {t.callNote}
-                    </p>
+                </section>
+
+                {/* Deployment */}
+                <section className="mb-24">
+                    <h2 className="mb-6 text-2xl font-semibold">
+                        {t.deploymentTitle}
+                    </h2>
+                    <ul className="space-y-4 text-slate-400">
+                        {t.deployment.map((item) => (
+                            <li key={item}>• {item}</li>
+                        ))}
+                    </ul>
                 </section>
 
                 {/* Who */}
@@ -189,13 +222,13 @@ export default function Page() {
                     </ul>
                 </section>
 
-                {/* CTA */}
+                {/* Stage / CTA */}
                 <section className="rounded-xl border border-slate-800 bg-slate-900 p-5 md:p-10">
                     <h2 className="mb-4 text-2xl font-semibold">
-                        {t.footerTitle}
+                        {t.stageTitle}
                     </h2>
                     <p className="mb-6 max-w-2xl text-slate-400">
-                        {t.footerText}
+                        {t.stageText}
                     </p>
                     <a
                         href={LINKS.calendar}

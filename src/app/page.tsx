@@ -8,10 +8,17 @@ const copy = {
         tag: 'Cross-service change impact',
         title: 'See the impact of a change before you merge',
 
+        archivedNoticeTitle: 'Project status',
+        archivedNoticeText: `This project is no longer active.
+
+Over a few months I explored this idea, talked to engineers, and tried to validate it through direct sales.
+
+The conclusion was clear: while the problem exists, it’s not a priority for teams right now.
+
+Leaving this page up as a reference.`,
+
         subtitle:
             'Blast Radius analyzes API, schema and contract changes across repositories and highlights which services may be affected, directly inside your pull request.',
-
-        ctaPrimary: 'Discuss a pilot (30 min)',
 
         problemTitle: 'The reality of growing systems',
         problem: [
@@ -51,21 +58,29 @@ const copy = {
             'Projects with cross-repository dependencies',
         ],
 
-        stageTitle: 'Current stage',
+        stageTitle: 'Context',
         stageText:
-            'Blast Radius is in early development. I am working with a small number of engineering teams to build the first production-ready pilot based on real repositories and real change scenarios.',
+            'This concept was explored as part of an early-stage validation process. The focus was on understanding how teams handle cross-service changes and whether proactive impact detection is something they would adopt.',
 
-        footerCta: 'Talk through your system (30 min)',
+        footerNote:
+            'If this problem becomes relevant for your team in the future, feel free to reach out.',
     },
 
     ru: {
         tag: 'Анализ влияния изменений между сервисами',
         title: 'Понимай влияние изменений до их внедрения',
 
+        archivedNoticeTitle: 'Статус проекта',
+        archivedNoticeText: `Этот проект больше не развивается.
+
+В течение нескольких месяцев я исследовал эту идею, общался с инженерами и пытался валидировать её через продажи.
+
+Вывод оказался простой: проблема существует, но сейчас не является приоритетом для команд.
+
+Оставляю эту страницу как референс.`,
+
         subtitle:
             'Blast Radius анализирует изменения API, схем и контрактов между репозиториями и показывает, какие сервисы могут быть затронуты прямо в pull request.',
-
-        ctaPrimary: 'Обсудить пилот (30 мин)',
 
         problemTitle: 'Как это выглядит в реальных системах',
         problem: [
@@ -105,16 +120,16 @@ const copy = {
             'Проекты с зависимостями между репозиториями',
         ],
 
-        stageTitle: 'Текущая стадия',
+        stageTitle: 'Контекст',
         stageText:
-            'Blast Radius находится на ранней стадии. Я работаю с ограниченным числом команд, чтобы собрать первый production-ready пилот на основе реальных репозиториев и сценариев изменений.',
+            'Эта идея исследовалась в рамках ранней валидации. Основной фокус был на том, как команды работают с межсервисными изменениями и готовы ли они использовать инструменты для оценки влияния заранее.',
 
-        footerCta: 'Разобрать ваш кейс (30 мин)',
+        footerNote:
+            'Если эта проблема станет актуальной для вашей команды, можно написать мне.',
     },
 };
 
 const LINKS = {
-    calendar: 'https://calendly.com/m4xh17/30min',
     linkedin: 'https://www.linkedin.com/in/maxh1t',
 };
 
@@ -147,19 +162,20 @@ export default function Page() {
                     <h1 className="max-w-3xl text-4xl font-semibold tracking-tight sm:text-5xl">
                         {t.title}
                     </h1>
+
+                    {/* Archived notice */}
+                    <div className="mt-6 max-w-2xl rounded-lg border border-slate-800 bg-slate-900 p-4 text-sm text-slate-400">
+                        <p className="font-medium text-slate-200 mb-2">
+                            {t.archivedNoticeTitle}
+                        </p>
+                        <p className="whitespace-pre-line">
+                            {t.archivedNoticeText}
+                        </p>
+                    </div>
+
                     <p className="mt-6 max-w-2xl text-lg text-slate-400">
                         {t.subtitle}
                     </p>
-                    <div className="mt-8">
-                        <a
-                            href={LINKS.calendar}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center rounded-md bg-slate-200 px-5 py-3 text-sm font-medium text-slate-950 hover:bg-white"
-                        >
-                            {t.ctaPrimary}
-                        </a>
-                    </div>
                 </section>
 
                 {/* Problem */}
@@ -222,22 +238,15 @@ export default function Page() {
                     </ul>
                 </section>
 
-                {/* Stage / CTA */}
+                {/* Context */}
                 <section className="rounded-xl border border-slate-800 bg-slate-900 p-5 md:p-10">
                     <h2 className="mb-4 text-2xl font-semibold">
                         {t.stageTitle}
                     </h2>
-                    <p className="mb-6 max-w-2xl text-slate-400">
+                    <p className="mb-4 max-w-2xl text-slate-400">
                         {t.stageText}
                     </p>
-                    <a
-                        href={LINKS.calendar}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex w-fit items-center justify-center rounded-md bg-slate-200 px-5 py-3 text-sm font-medium text-slate-950 hover:bg-white"
-                    >
-                        {t.footerCta}
-                    </a>
+                    <p className="text-sm text-slate-500">{t.footerNote}</p>
                 </section>
             </main>
 
